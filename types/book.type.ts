@@ -1,4 +1,4 @@
-type Book = {
+type BookType = {
   title?: string;
   subtitle?: string;
   authors?: string[];
@@ -28,4 +28,4 @@ type Book = {
   shelf?: string;
 };
 
-export default Book;
+export default BookType;
