@@ -1,6 +1,6 @@
-import Book from "../types/book.type";
-import Headers from "../types/headers.type";
-import { Errorhandeling } from "./Errors/Errors";
+import Book from "../../types/book.type";
+import Headers from "../../types/headers.type";
+import { ErrorHandling } from "../Errors";
 import axios from "axios";
 
 const api = "https://reactnd-books-api.udacity.com";
@@ -22,7 +22,7 @@ export const get = async (bookId: string) => {
     return book;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      Errorhandeling(error.response?.status as number);
+      ErrorHandling(error.response?.status as number);
     } else {
       console.log("something went wrong");
     }
@@ -38,7 +38,7 @@ export const getAll = async () => {
     return books;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      Errorhandeling(error.response?.status as number);
+      ErrorHandling(error.response?.status as number);
     } else {
       console.log("something went wrong");
     }
