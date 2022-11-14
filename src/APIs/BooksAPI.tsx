@@ -1,4 +1,4 @@
-import Book from "../../types/book.type";
+import BookType from "../../types/book.type";
 import Headers from "../../types/headers.type";
 import { ErrorHandling } from "../Errors";
 import axios from "axios";
@@ -18,7 +18,7 @@ export const get = async (bookId: string) => {
     const { data } = await axios.get(`${api}/books/${bookId}`, {
       headers,
     });
-    const book: Book = data.book;
+    const book: BookType = data.book;
     return book;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -29,23 +29,25 @@ export const get = async (bookId: string) => {
   }
 };
 
-export const getAll = async () => {
+export const getAll = async (): Promise<BookType[] | null> => {
   try {
     const { data } = await axios.get(`${api}/books`, {
       headers,
     });
-    const books: Book[] = data.book;
+    const books: BookType[] = data.book;
     return books;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      ErrorHandling(error.response?.status as number);
+      return [];
+      // ErrorHandling(error.response?.status as number);
     } else {
-      console.log("something went wrong");
+      return [];
+      // console.log("something went wrong");
     }
   }
 };
 
-export const update = (book: Book, shelf: string) =>
+export const update = (book: BookType, shelf: string) =>
   fetch(`${api}/books/${book.id}`, {
     method: "PUT",
     headers: {

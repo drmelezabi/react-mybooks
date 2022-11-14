@@ -1,11 +1,11 @@
 import React from "react";
-import Book from "../../types/book.type";
+import BookType from "../../types/book.type";
 
 const BookElement = ({
   book,
   changeBookShelf,
 }: {
-  book: Book;
+  book: BookType;
   changeBookShelf: Function;
 }) => {
   return (
