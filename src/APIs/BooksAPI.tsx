@@ -34,15 +34,13 @@ export const getAll = async (): Promise<BookType[] | null> => {
     const { data } = await axios.get(`${api}/books`, {
       headers,
     });
-    const books: BookType[] = data.book;
+    const books: BookType[] = data.books;
     return books;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       return [];
-      // ErrorHandling(error.response?.status as number);
     } else {
       return [];
-      // console.log("something went wrong");
     }
   }
 };
@@ -68,3 +66,26 @@ export const search = (query: string, maxResults: number) =>
   })
     .then((res) => res.json())
     .then((data) => data.books);
+
+export const searchx = async (query: string, maxResults: number) => {
+  try {
+    const { data } = await axios.post(
+      `${api}/search`,
+      { query, maxResults },
+      {
+        headers: {
+          ...headers,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const books: BookType[] = data.books;
+    return books;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return [];
+    } else {
+      return [];
+    }
+  }
+};
