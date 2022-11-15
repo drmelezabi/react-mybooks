@@ -14,6 +14,7 @@ const Search = (): JSX.Element => {
 
   useEffect(() => {
     const bookList = searchBooks as BookType[];
+    // eslint-disable-next-line array-callback-return
     const combined = bookList.map((book: BookType) => {
       if (bookList) {
         if (mapOfIdToBooks.has(book.id)) {

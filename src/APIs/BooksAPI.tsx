@@ -56,29 +56,17 @@ export const update = (book: BookType, shelf: string) =>
     body: JSON.stringify({ shelf }),
   }).then((res) => res.json());
 
-// export const search = async (query: string) => {
-//   const { data } = await axios.post(
-//     `${api}/search`,
-//     { query },
-//     {
-//       headers: {
-//         ...headers,
-//         "Content-Type": "application/json",
-//       },
-//     }
-//   );
-//   const books: BookType[] = data.books;
-//   return books;
-// };
-
-export const search = (query: string) =>
-  fetch(`${api}/search`, {
-    method: "POST",
-    headers: {
-      ...headers,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ query }),
-  })
-    .then((res) => res.json())
-    .then((data) => data.books);
+export const search = async (query: string) => {
+  const { data } = await axios.post(
+    `${api}/search`,
+    { query },
+    {
+      headers: {
+        ...headers,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const books = data.books;
+  return books;
+};

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import BookType from "../../types/book.type";
 import BookShelves from "./BookShelves";
 import * as BooksAPI from "../APIs/BooksAPI";
+import Header from "./header";
 
 const Home = (): JSX.Element => {
   const [books, setBooks] = useState<BookType[]>([]);
@@ -45,9 +46,7 @@ const Home = (): JSX.Element => {
 
   return (
     <div className="list-books">
-      <div className="list-books-title">
-        <h1>MyReads</h1>
-      </div>
+      <Header />
       <div className="list-books-content">
         <div>
           <BookShelves books={books} updateBookShelf={updateBookShelf} />
