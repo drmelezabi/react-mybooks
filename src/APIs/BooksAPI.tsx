@@ -55,19 +55,7 @@ export const update = (book: BookType, shelf: string) =>
     body: JSON.stringify({ shelf }),
   }).then((res) => res.json());
 
-export const search = (query: string, maxResults: number) =>
-  fetch(`${api}/search`, {
-    method: "POST",
-    headers: {
-      ...headers,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ query, maxResults }),
-  })
-    .then((res) => res.json())
-    .then((data) => data.books);
-
-export const searchx = async (query: string, maxResults: number) => {
+export const search = async (query: string, maxResults: number) => {
   try {
     const { data } = await axios.post(
       `${api}/search`,
