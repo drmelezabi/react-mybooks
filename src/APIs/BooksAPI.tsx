@@ -1,5 +1,7 @@
 import BookType from "../../types/book.type";
 import Headers from "../../types/headers.type";
+import SearchingValue from "../../types/SearchingValue";
+
 import { ErrorHandling } from "../Errors";
 import axios from "axios";
 
@@ -55,25 +57,29 @@ export const update = (book: BookType, shelf: string) =>
     body: JSON.stringify({ shelf }),
   }).then((res) => res.json());
 
-export const search = async (query: string, maxResults: number) => {
-  try {
-    const { data } = await axios.post(
-      `${api}/search`,
-      { query, maxResults },
-      {
-        headers: {
-          ...headers,
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const books: BookType[] = data.books;
-    return books;
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      return [];
-    } else {
-      return [];
-    }
-  }
-};
+// export const search = async (query: string) => {
+//   const { data } = await axios.post(
+//     `${api}/search`,
+//     { query },
+//     {
+//       headers: {
+//         ...headers,
+//         "Content-Type": "application/json",
+//       },
+//     }
+//   );
+//   const books: BookType[] = data.books;
+//   return books;
+// };
+
+export const search = (query: string) =>
+  fetch(`${api}/search`, {
+    method: "POST",
+    headers: {
+      ...headers,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ query }),
+  })
+    .then((res) => res.json())
+    .then((data) => data.books);

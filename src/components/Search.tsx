@@ -9,15 +9,18 @@ const Search = (): JSX.Element => {
   const [books, setBooks] = useState<BookType[]>([]);
   const [query, setQuery] = useState("");
   const [mergedBooks, setMergedBooks] = useState<BookType[]>([]);
-  const [mapOfIdToBooks, setMapOfIdToBooks] = useState(new Map());
-  const [searchBooks, setSearchBooks] = useQuery(query);
+  const [mapOfIdToBooks] = useState(new Map());
+  const [searchBooks] = useQuery(query);
 
   useEffect(() => {
-    const combined = searchBooks.map((book: BookType) => {
-      if (mapOfIdToBooks.has(book.id)) {
-        return mapOfIdToBooks.get(book.id);
-      } else {
-        return book;
+    const bookList = searchBooks as BookType[];
+    const combined = bookList.map((book: BookType) => {
+      if (bookList) {
+        if (mapOfIdToBooks.has(book.id)) {
+          return mapOfIdToBooks.get(book.id);
+        } else {
+          return book;
+        }
       }
     });
     setMergedBooks(combined);
