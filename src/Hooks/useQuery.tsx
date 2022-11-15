@@ -11,7 +11,7 @@ export default function useQuery(query: string) {
     const result = async () => {
       let isActive = true;
       if (value) {
-        const results: BookType[] = await BooksAPI.searchx(query, 500);
+        const results: BookType[] = await BooksAPI.search(query, 500);
         if (!value) {
           setSearchBooks([]);
         } else {
