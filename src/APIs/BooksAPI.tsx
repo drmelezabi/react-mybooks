@@ -1,6 +1,5 @@
 import BookType from "../../types/book.type";
 import Headers from "../../types/headers.type";
-import SearchingValue from "../../types/SearchingValue";
 
 import { ErrorHandling } from "../Errors";
 import axios from "axios";

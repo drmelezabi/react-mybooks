@@ -24,7 +24,7 @@ const Search = (): JSX.Element => {
       }
     });
     setMergedBooks(combined);
-  }, [searchBooks]);
+  }, [mapOfIdToBooks, searchBooks]);
 
   const updateBookShelf = (book: BookType, whereTo: string) => {
     const updatedBooks = books.map((bookItem) => {
