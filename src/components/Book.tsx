@@ -1,6 +1,14 @@
 import React from "react";
 import BookType from "../../types/book.type";
 
+const stylize = (url: string) => {
+  return {
+    width: 128,
+    height: 193,
+    backgroundImage: url ? `url(${url})` : "none",
+  };
+};
+
 const BookElement = ({
   book,
   changeBookShelf,
@@ -13,16 +21,13 @@ const BookElement = ({
       <div className="book-top">
         <div
           className="book-cover"
-          style={{
-            width: 128,
-            height: 193,
-            backgroundImage: `url(${book.imageLinks?.thumbnail})`,
-          }}
+          style={stylize(book.imageLinks?.thumbnail as string)}
         ></div>
         <div className="book-shelf-changer">
           <select
+            aria-label="State"
             defaultValue={book.shelf ? book.shelf : "none"}
-            onChange={(e) => changeBookShelf(book, e.target.value)}
+            onChange={e => changeBookShelf(book, e.target.value)}
           >
             <option value="move" disabled>
               Move to...

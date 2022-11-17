@@ -10,10 +10,10 @@ const BookShelves = ({
   updateBookShelf: Function;
 }) => {
   const currentlyReading = books.filter(
-    (book) => book.shelf === "currentlyReading"
+    book => book.shelf === "currentlyReading"
   );
-  const whatToRead = books.filter((book) => book.shelf === "wantToRead");
-  const read = books.filter((book) => book.shelf === "read");
+  const whatToRead = books.filter(book => book.shelf === "wantToRead");
+  const read = books.filter(book => book.shelf === "read");
 
   return (
     <div>

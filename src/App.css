@@ -1,5 +1,6 @@
 :root {
-  --backcolor: #3063af;
+  --maincolor: #3063af;
+  --backgroundcolor: rgb(248, 248, 248);
 }
 
 html,
@@ -12,20 +13,20 @@ body {
 }
 body,
 .app {
-  background: white;
+  background: var(--backgroundcolor);
 }
 
 /* main page */
 
 .list-books-title {
   padding: 10px 0;
-  background: var(--backcolor);
+  background: var(--maincolor);
   text-align: center;
 }
 .list-books-title h1 {
   font-weight: 400;
   margin: 0;
-  color: white;
+  color: var(--backgroundcolor);
 }
 
 .list-books-content {
@@ -60,7 +61,7 @@ body,
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: var(--backcolor);
+  background: var(--maincolor);
   background-image: url("./icons/add.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -98,7 +99,7 @@ body,
   left: 15px;
   width: 50px;
   height: 53px;
-  background: white;
+  background: var(--backgroundcolor);
   background-image: url("./icons/arrow-back.svg");
   background-position: center;
   background-repeat: no-repeat;
@@ -154,7 +155,7 @@ body,
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--backcolor);
+  background: var(--maincolor);
   background-image: url("./icons/arrow-drop-down.svg");
   background-repeat: no-repeat;
   background-position: center;

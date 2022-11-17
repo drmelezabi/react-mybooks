@@ -30,8 +30,8 @@ function App() {
     setMergedBooks(combined);
   }, [mapOfIdToBooks, searchBooks]);
 
-  const updateBookShelf = (book: BookType, whereTo: string) => {
-    const updatedBooks = books.map((bookItem) => {
+  const updateShelf = (book: BookType, whereTo: string) => {
+    const updatedBooks = books.map(bookItem => {
       if (bookItem.id === book.id) {
         book.shelf = whereTo;
         return book;
@@ -48,7 +48,7 @@ function App() {
 
   const createMapOfBooks = (books: BookType[]) => {
     const map = new Map();
-    books.map((book) => map.set(book.id, book));
+    books.map(book => map.set(book.id, book));
     return map;
   };
 
@@ -82,18 +82,24 @@ function App() {
                       type="text"
                       placeholder="Search by title or author"
                       value={query}
-                      onChange={(e) => setQuery(e.target.value)}
+                      onChange={e => setQuery(e.target.value)}
                     />
                   </div>
                 </div>
                 <div className="search-books-results">
-                  <ol className="books-grid">
-                    {mergedBooks.map((book: BookType) => (
-                      <li key={book.id}>
-                        <Book book={book} changeBookShelf={updateBookShelf} />
-                      </li>
-                    ))}
-                  </ol>
+                  {mergedBooks.length ? (
+                    <ol className="books-grid">
+                      {mergedBooks.map((book: BookType) => (
+                        <li key={book.id}>
+                          <Book book={book} changeBookShelf={updateShelf} />
+                        </li>
+                      ))}
+                    </ol>
+                  ) : (
+                    <div>
+                      <h1>not found</h1>
+                    </div>
+                  )}
                 </div>
               </div>
             }
@@ -105,10 +111,7 @@ function App() {
                 <Header />
                 <div className="list-books-content">
                   <div>
-                    <BookShelves
-                      books={books}
-                      updateBookShelf={updateBookShelf}
-                    />
+                    <BookShelves books={books} updateBookShelf={updateShelf} />
                   </div>
                 </div>
                 <div className="open-search">
