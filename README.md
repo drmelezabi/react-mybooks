@@ -31,7 +31,9 @@ npx create-react-app react-mybooks --template typescript
 ```
 
 ## File Structure
+
 ```
+📦REACT-MYBOOKS
 ┣ 📂public
 ┃ ┣ 📜favicon.ico
 ┃ ┗ 📜index.html
