@@ -31,7 +31,7 @@ npx create-react-app react-mybooks --template typescript
 ```
 
 ## File Structure
-
+```
 ┣ 📂public
 ┃ ┣ 📜favicon.ico
 ┃ ┗ 📜index.html
@@ -73,6 +73,7 @@ npx create-react-app react-mybooks --template typescript
 ┣ 📜package.json
 ┣ 📜README.md
 ┗ 📜tsconfig.json
+```
 
 In the project directory, you can run:
 
